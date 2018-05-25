@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -7,12 +8,31 @@ namespace LTGV
     public partial class MainForm : Form
     {
         private DataTable table;
+        private List<Header> headers;
 
         public MainForm()
         {
             InitializeComponent();
+            BindGenerelHeaders();
         }
 
+        private void BindGenerelHeaders()
+        {
+            headers = new List<Header>()
+            {
+                new Header(cbChainName, "ChainName"),
+                new Header(cbYear, "Year"),
+                new Header(cbWeek, "Week"),
+                new Header(cbShopcode, "Shopcode"),
+                new Header(cbBarcode, "Barcode"),
+                new Header(cbBarname, "Barname"),
+                new Header(cbGroupname, "Groupname"),
+                new Header(cbProducerBrand, "ProducerBrand"),
+                new Header(cbSilesItem, "SilesItem"),
+                new Header(cbSilesValue, "SilesValue"),
+                new Header(cbCostPrice, "CostPrice")
+            };
+        }
 
         private void miOpen_Click(object sender, EventArgs e)
         {
@@ -36,7 +56,27 @@ namespace LTGV
                 }
 
                 table = dataSet.Tables[tableIndex];
+
+                foreach (var header in headers)
+                {
+                    for (int i = 0; i < table.Columns.Count; i++)
+                    {
+                        header.DimList.Items.Add(StringUtils.GetExcelColumnName(i, 0) + ": " + table.Columns[i].ColumnName);
+                    }
+                }
             }
+        }
+
+
+        private void btnSettings_Click(object sender, EventArgs args)
+        {
+            var s = sender as Button;
+
+            if (s == btnChainName)
+            {
+
+            }
+            else if(s == btnYear)
         }
     }
 }
