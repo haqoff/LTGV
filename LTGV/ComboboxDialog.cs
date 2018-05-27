@@ -15,7 +15,7 @@ namespace LTGV
             Text = caption;
             foreach (var obj in objects)
             {
-                cbList.Items.Add(objects);
+                cbList.Items.Add(obj);
             }
             cbList.SelectedIndex = 0;
 

@@ -34,13 +34,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 195);
+            this.ClientSize = new System.Drawing.Size(294, 195);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HeaderSettings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HeaderSettings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HeaderSettings_FormClosing);
+            this.Load += new System.EventHandler(this.HeaderSettings_Load);
             this.ResumeLayout(false);
 
         }

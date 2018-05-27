@@ -1,40 +1,45 @@
-﻿using System;
-using System.Drawing;
+﻿using LTGV.GUI;
+using System;
 using System.Windows.Forms;
 
 namespace LTGV.Format
 {
     public abstract class AbstractFormatter
     {
-        public Label LblName { get; }
-        public TextBox TbCommand { get; }
-        public CheckBox CbEnabled { get; }
+        public bool Enabled { get; private set; }
 
-        private string hint;
+        public Label LblName { get; }
+        public HintTextBox TbCommand { get; }
+        public CheckBox CbEnabled { get; }
 
         protected AbstractFormatter(string name, string hint)
         {
-            LblName = new Label {Text = name};
+            LblName = new Label { Text = name };
+            TbCommand = new HintTextBox() { Hint = hint };
 
-            TbCommand = new TextBox();
-            this.hint = hint;
-            TbCommand.TextChanged += OnTextChanged;
-            TbCommand.Text = hint;
-
-            CbEnabled = new CheckBox();
+            CbEnabled = new CheckBox() { Text = "" };
+            CbEnabled.CheckedChanged += (object sender, EventArgs args) => SwitchEnable();
+            SwitchEnable();
         }
 
-        private void OnTextChanged(object sender, EventArgs e)
+        private void SwitchEnable()
         {
-            if (TbCommand.Text == hint) TbCommand.ForeColor = Color.Silver;
+            Enabled = CbEnabled.Checked;
+
+            if (CbEnabled.Checked)
+            {
+                LblName.Enabled = true;
+                TbCommand.Enabled = true;
+            }
             else
             {
-                TbCommand.ForeColor = Color.Black;
-                TbCommand.Text = TbCommand.Text.Replace(hint, "");
+                LblName.Enabled = false;
+                TbCommand.Enabled = false;
             }
         }
 
-
         public abstract string Format(string source);
+
+        public abstract void ParseCommand();
     }
 }

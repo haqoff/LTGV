@@ -32,22 +32,18 @@
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.pMain = new System.Windows.Forms.Panel();
-            this.lblChainName = new System.Windows.Forms.Label();
-            this.cbChainName = new System.Windows.Forms.ComboBox();
-            this.lblYear = new System.Windows.Forms.Label();
-            this.cbYear = new System.Windows.Forms.ComboBox();
-            this.lblMonth = new System.Windows.Forms.Label();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.lblWeek = new System.Windows.Forms.Label();
-            this.cbWeek = new System.Windows.Forms.ComboBox();
-            this.lblGroupname = new System.Windows.Forms.Label();
-            this.cbGroupname = new System.Windows.Forms.ComboBox();
-            this.lblBarname = new System.Windows.Forms.Label();
-            this.cbBarname = new System.Windows.Forms.ComboBox();
-            this.lblBarcode = new System.Windows.Forms.Label();
-            this.cbBarcode = new System.Windows.Forms.ComboBox();
-            this.lblShopcode = new System.Windows.Forms.Label();
-            this.cbShopcode = new System.Windows.Forms.ComboBox();
+            this.btnCostPrice = new System.Windows.Forms.Button();
+            this.btnSilesValue = new System.Windows.Forms.Button();
+            this.btnSilesItem = new System.Windows.Forms.Button();
+            this.btnProducerBrand = new System.Windows.Forms.Button();
+            this.btnGroupname = new System.Windows.Forms.Button();
+            this.btnBarname = new System.Windows.Forms.Button();
+            this.btnBarcode = new System.Windows.Forms.Button();
+            this.btnShopcode = new System.Windows.Forms.Button();
+            this.btnWeek = new System.Windows.Forms.Button();
+            this.btnMonth = new System.Windows.Forms.Button();
+            this.btnYear = new System.Windows.Forms.Button();
+            this.btnChainName = new System.Windows.Forms.Button();
             this.lblCostPrice = new System.Windows.Forms.Label();
             this.cbCostPrice = new System.Windows.Forms.ComboBox();
             this.lblSilesValue = new System.Windows.Forms.Label();
@@ -56,18 +52,25 @@
             this.cbSilesItem = new System.Windows.Forms.ComboBox();
             this.lblProducerBrand = new System.Windows.Forms.Label();
             this.cbProducerBrand = new System.Windows.Forms.ComboBox();
-            this.btnChainName = new System.Windows.Forms.Button();
-            this.btnYear = new System.Windows.Forms.Button();
-            this.btnWeek = new System.Windows.Forms.Button();
-            this.btnMonth = new System.Windows.Forms.Button();
-            this.btnGroupname = new System.Windows.Forms.Button();
-            this.btnBarname = new System.Windows.Forms.Button();
-            this.btnBarcode = new System.Windows.Forms.Button();
-            this.btnShopcode = new System.Windows.Forms.Button();
-            this.btnCostPrice = new System.Windows.Forms.Button();
-            this.btnSilesValue = new System.Windows.Forms.Button();
-            this.btnSilesItem = new System.Windows.Forms.Button();
-            this.btnProducerBrand = new System.Windows.Forms.Button();
+            this.lblGroupname = new System.Windows.Forms.Label();
+            this.cbGroupname = new System.Windows.Forms.ComboBox();
+            this.lblBarname = new System.Windows.Forms.Label();
+            this.cbBarname = new System.Windows.Forms.ComboBox();
+            this.lblBarcode = new System.Windows.Forms.Label();
+            this.cbBarcode = new System.Windows.Forms.ComboBox();
+            this.lblShopcode = new System.Windows.Forms.Label();
+            this.cbShopcode = new System.Windows.Forms.ComboBox();
+            this.lblWeek = new System.Windows.Forms.Label();
+            this.cbWeek = new System.Windows.Forms.ComboBox();
+            this.lblMonth = new System.Windows.Forms.Label();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.lblYear = new System.Windows.Forms.Label();
+            this.cbYear = new System.Windows.Forms.ComboBox();
+            this.lblChainName = new System.Windows.Forms.Label();
+            this.cbChainName = new System.Windows.Forms.ComboBox();
+            this.btnProccess = new System.Windows.Forms.Button();
+            this.pbProgress = new System.Windows.Forms.ProgressBar();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenu.SuspendLayout();
             this.pMain.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +88,8 @@
             // tsmiFile
             // 
             this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miOpen});
+            this.miOpen,
+            this.закрытьToolStripMenuItem});
             this.tsmiFile.Name = "tsmiFile";
             this.tsmiFile.Size = new System.Drawing.Size(48, 20);
             this.tsmiFile.Text = "Файл";
@@ -93,12 +97,13 @@
             // miOpen
             // 
             this.miOpen.Name = "miOpen";
-            this.miOpen.Size = new System.Drawing.Size(180, 22);
+            this.miOpen.Size = new System.Drawing.Size(121, 22);
             this.miOpen.Text = "Открыть";
             this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
             // 
             // pMain
             // 
+            this.pMain.Controls.Add(this.btnProccess);
             this.pMain.Controls.Add(this.btnCostPrice);
             this.pMain.Controls.Add(this.btnSilesValue);
             this.pMain.Controls.Add(this.btnSilesItem);
@@ -135,146 +140,119 @@
             this.pMain.Controls.Add(this.cbYear);
             this.pMain.Controls.Add(this.lblChainName);
             this.pMain.Controls.Add(this.cbChainName);
+            this.pMain.Enabled = false;
             this.pMain.Location = new System.Drawing.Point(12, 37);
             this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(287, 355);
+            this.pMain.Size = new System.Drawing.Size(287, 360);
             this.pMain.TabIndex = 1;
             // 
-            // lblChainName
+            // btnCostPrice
             // 
-            this.lblChainName.AutoSize = true;
-            this.lblChainName.Location = new System.Drawing.Point(3, 10);
-            this.lblChainName.Name = "lblChainName";
-            this.lblChainName.Size = new System.Drawing.Size(65, 13);
-            this.lblChainName.TabIndex = 1;
-            this.lblChainName.Text = "ChainName:";
+            this.btnCostPrice.Location = new System.Drawing.Point(255, 303);
+            this.btnCostPrice.Name = "btnCostPrice";
+            this.btnCostPrice.Size = new System.Drawing.Size(28, 21);
+            this.btnCostPrice.TabIndex = 35;
+            this.btnCostPrice.Text = "...";
+            this.btnCostPrice.UseVisualStyleBackColor = true;
             // 
-            // cbChainName
+            // btnSilesValue
             // 
-            this.cbChainName.FormattingEnabled = true;
-            this.cbChainName.Location = new System.Drawing.Point(74, 7);
-            this.cbChainName.Name = "cbChainName";
-            this.cbChainName.Size = new System.Drawing.Size(175, 21);
-            this.cbChainName.TabIndex = 0;
+            this.btnSilesValue.Location = new System.Drawing.Point(255, 277);
+            this.btnSilesValue.Name = "btnSilesValue";
+            this.btnSilesValue.Size = new System.Drawing.Size(28, 21);
+            this.btnSilesValue.TabIndex = 34;
+            this.btnSilesValue.Text = "...";
+            this.btnSilesValue.UseVisualStyleBackColor = true;
             // 
-            // lblYear
+            // btnSilesItem
             // 
-            this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(3, 37);
-            this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(32, 13);
-            this.lblYear.TabIndex = 3;
-            this.lblYear.Text = "Year:";
+            this.btnSilesItem.Location = new System.Drawing.Point(255, 250);
+            this.btnSilesItem.Name = "btnSilesItem";
+            this.btnSilesItem.Size = new System.Drawing.Size(28, 21);
+            this.btnSilesItem.TabIndex = 33;
+            this.btnSilesItem.Text = "...";
+            this.btnSilesItem.UseVisualStyleBackColor = true;
             // 
-            // cbYear
+            // btnProducerBrand
             // 
-            this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(74, 34);
-            this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(175, 21);
-            this.cbYear.TabIndex = 2;
+            this.btnProducerBrand.Location = new System.Drawing.Point(255, 223);
+            this.btnProducerBrand.Name = "btnProducerBrand";
+            this.btnProducerBrand.Size = new System.Drawing.Size(28, 21);
+            this.btnProducerBrand.TabIndex = 32;
+            this.btnProducerBrand.Text = "...";
+            this.btnProducerBrand.UseVisualStyleBackColor = true;
             // 
-            // lblMonth
+            // btnGroupname
             // 
-            this.lblMonth.AutoSize = true;
-            this.lblMonth.Location = new System.Drawing.Point(3, 64);
-            this.lblMonth.Name = "lblMonth";
-            this.lblMonth.Size = new System.Drawing.Size(40, 13);
-            this.lblMonth.TabIndex = 5;
-            this.lblMonth.Text = "Month:";
+            this.btnGroupname.Location = new System.Drawing.Point(255, 195);
+            this.btnGroupname.Name = "btnGroupname";
+            this.btnGroupname.Size = new System.Drawing.Size(28, 21);
+            this.btnGroupname.TabIndex = 31;
+            this.btnGroupname.Text = "...";
+            this.btnGroupname.UseVisualStyleBackColor = true;
             // 
-            // cbMonth
+            // btnBarname
             // 
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Location = new System.Drawing.Point(74, 61);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(175, 21);
-            this.cbMonth.TabIndex = 4;
+            this.btnBarname.Location = new System.Drawing.Point(255, 169);
+            this.btnBarname.Name = "btnBarname";
+            this.btnBarname.Size = new System.Drawing.Size(28, 21);
+            this.btnBarname.TabIndex = 30;
+            this.btnBarname.Text = "...";
+            this.btnBarname.UseVisualStyleBackColor = true;
             // 
-            // lblWeek
+            // btnBarcode
             // 
-            this.lblWeek.AutoSize = true;
-            this.lblWeek.Location = new System.Drawing.Point(3, 91);
-            this.lblWeek.Name = "lblWeek";
-            this.lblWeek.Size = new System.Drawing.Size(39, 13);
-            this.lblWeek.TabIndex = 7;
-            this.lblWeek.Text = "Week:";
+            this.btnBarcode.Location = new System.Drawing.Point(255, 142);
+            this.btnBarcode.Name = "btnBarcode";
+            this.btnBarcode.Size = new System.Drawing.Size(28, 21);
+            this.btnBarcode.TabIndex = 29;
+            this.btnBarcode.Text = "...";
+            this.btnBarcode.UseVisualStyleBackColor = true;
             // 
-            // cbWeek
+            // btnShopcode
             // 
-            this.cbWeek.FormattingEnabled = true;
-            this.cbWeek.Location = new System.Drawing.Point(74, 88);
-            this.cbWeek.Name = "cbWeek";
-            this.cbWeek.Size = new System.Drawing.Size(175, 21);
-            this.cbWeek.TabIndex = 6;
+            this.btnShopcode.Location = new System.Drawing.Point(255, 115);
+            this.btnShopcode.Name = "btnShopcode";
+            this.btnShopcode.Size = new System.Drawing.Size(28, 21);
+            this.btnShopcode.TabIndex = 28;
+            this.btnShopcode.Text = "...";
+            this.btnShopcode.UseVisualStyleBackColor = true;
             // 
-            // lblGroupname
+            // btnWeek
             // 
-            this.lblGroupname.AutoSize = true;
-            this.lblGroupname.Location = new System.Drawing.Point(3, 199);
-            this.lblGroupname.Name = "lblGroupname";
-            this.lblGroupname.Size = new System.Drawing.Size(65, 13);
-            this.lblGroupname.TabIndex = 15;
-            this.lblGroupname.Text = "Groupname:";
+            this.btnWeek.Location = new System.Drawing.Point(255, 88);
+            this.btnWeek.Name = "btnWeek";
+            this.btnWeek.Size = new System.Drawing.Size(28, 21);
+            this.btnWeek.TabIndex = 27;
+            this.btnWeek.Text = "...";
+            this.btnWeek.UseVisualStyleBackColor = true;
             // 
-            // cbGroupname
+            // btnMonth
             // 
-            this.cbGroupname.FormattingEnabled = true;
-            this.cbGroupname.Location = new System.Drawing.Point(74, 196);
-            this.cbGroupname.Name = "cbGroupname";
-            this.cbGroupname.Size = new System.Drawing.Size(175, 21);
-            this.cbGroupname.TabIndex = 14;
+            this.btnMonth.Location = new System.Drawing.Point(255, 61);
+            this.btnMonth.Name = "btnMonth";
+            this.btnMonth.Size = new System.Drawing.Size(28, 21);
+            this.btnMonth.TabIndex = 26;
+            this.btnMonth.Text = "...";
+            this.btnMonth.UseVisualStyleBackColor = true;
             // 
-            // lblBarname
+            // btnYear
             // 
-            this.lblBarname.AutoSize = true;
-            this.lblBarname.Location = new System.Drawing.Point(3, 172);
-            this.lblBarname.Name = "lblBarname";
-            this.lblBarname.Size = new System.Drawing.Size(52, 13);
-            this.lblBarname.TabIndex = 13;
-            this.lblBarname.Text = "Barname:";
+            this.btnYear.Location = new System.Drawing.Point(255, 34);
+            this.btnYear.Name = "btnYear";
+            this.btnYear.Size = new System.Drawing.Size(28, 21);
+            this.btnYear.TabIndex = 25;
+            this.btnYear.Text = "...";
+            this.btnYear.UseVisualStyleBackColor = true;
             // 
-            // cbBarname
+            // btnChainName
             // 
-            this.cbBarname.FormattingEnabled = true;
-            this.cbBarname.Location = new System.Drawing.Point(74, 169);
-            this.cbBarname.Name = "cbBarname";
-            this.cbBarname.Size = new System.Drawing.Size(175, 21);
-            this.cbBarname.TabIndex = 12;
-            // 
-            // lblBarcode
-            // 
-            this.lblBarcode.AutoSize = true;
-            this.lblBarcode.Location = new System.Drawing.Point(3, 145);
-            this.lblBarcode.Name = "lblBarcode";
-            this.lblBarcode.Size = new System.Drawing.Size(50, 13);
-            this.lblBarcode.TabIndex = 11;
-            this.lblBarcode.Text = "Barcode:";
-            // 
-            // cbBarcode
-            // 
-            this.cbBarcode.FormattingEnabled = true;
-            this.cbBarcode.Location = new System.Drawing.Point(74, 142);
-            this.cbBarcode.Name = "cbBarcode";
-            this.cbBarcode.Size = new System.Drawing.Size(175, 21);
-            this.cbBarcode.TabIndex = 10;
-            // 
-            // lblShopcode
-            // 
-            this.lblShopcode.AutoSize = true;
-            this.lblShopcode.Location = new System.Drawing.Point(3, 118);
-            this.lblShopcode.Name = "lblShopcode";
-            this.lblShopcode.Size = new System.Drawing.Size(59, 13);
-            this.lblShopcode.TabIndex = 9;
-            this.lblShopcode.Text = "Shopcode:";
-            // 
-            // cbShopcode
-            // 
-            this.cbShopcode.FormattingEnabled = true;
-            this.cbShopcode.Location = new System.Drawing.Point(74, 115);
-            this.cbShopcode.Name = "cbShopcode";
-            this.cbShopcode.Size = new System.Drawing.Size(175, 21);
-            this.cbShopcode.TabIndex = 8;
+            this.btnChainName.Location = new System.Drawing.Point(255, 7);
+            this.btnChainName.Name = "btnChainName";
+            this.btnChainName.Size = new System.Drawing.Size(28, 21);
+            this.btnChainName.TabIndex = 24;
+            this.btnChainName.Text = "...";
+            this.btnChainName.UseVisualStyleBackColor = false;
             // 
             // lblCostPrice
             // 
@@ -344,119 +322,172 @@
             this.cbProducerBrand.Size = new System.Drawing.Size(175, 21);
             this.cbProducerBrand.TabIndex = 16;
             // 
-            // btnChainName
+            // lblGroupname
             // 
-            this.btnChainName.Location = new System.Drawing.Point(255, 7);
-            this.btnChainName.Name = "btnChainName";
-            this.btnChainName.Size = new System.Drawing.Size(28, 21);
-            this.btnChainName.TabIndex = 24;
-            this.btnChainName.Text = "...";
-            this.btnChainName.UseVisualStyleBackColor = true;
+            this.lblGroupname.AutoSize = true;
+            this.lblGroupname.Location = new System.Drawing.Point(3, 199);
+            this.lblGroupname.Name = "lblGroupname";
+            this.lblGroupname.Size = new System.Drawing.Size(65, 13);
+            this.lblGroupname.TabIndex = 15;
+            this.lblGroupname.Text = "Groupname:";
             // 
-            // btnYear
+            // cbGroupname
             // 
-            this.btnYear.Location = new System.Drawing.Point(255, 34);
-            this.btnYear.Name = "btnYear";
-            this.btnYear.Size = new System.Drawing.Size(28, 21);
-            this.btnYear.TabIndex = 25;
-            this.btnYear.Text = "...";
-            this.btnYear.UseVisualStyleBackColor = true;
+            this.cbGroupname.FormattingEnabled = true;
+            this.cbGroupname.Location = new System.Drawing.Point(74, 196);
+            this.cbGroupname.Name = "cbGroupname";
+            this.cbGroupname.Size = new System.Drawing.Size(175, 21);
+            this.cbGroupname.TabIndex = 14;
             // 
-            // btnWeek
+            // lblBarname
             // 
-            this.btnWeek.Location = new System.Drawing.Point(255, 88);
-            this.btnWeek.Name = "btnWeek";
-            this.btnWeek.Size = new System.Drawing.Size(28, 21);
-            this.btnWeek.TabIndex = 27;
-            this.btnWeek.Text = "...";
-            this.btnWeek.UseVisualStyleBackColor = true;
+            this.lblBarname.AutoSize = true;
+            this.lblBarname.Location = new System.Drawing.Point(3, 172);
+            this.lblBarname.Name = "lblBarname";
+            this.lblBarname.Size = new System.Drawing.Size(52, 13);
+            this.lblBarname.TabIndex = 13;
+            this.lblBarname.Text = "Barname:";
             // 
-            // btnMonth
+            // cbBarname
             // 
-            this.btnMonth.Location = new System.Drawing.Point(255, 61);
-            this.btnMonth.Name = "btnMonth";
-            this.btnMonth.Size = new System.Drawing.Size(28, 21);
-            this.btnMonth.TabIndex = 26;
-            this.btnMonth.Text = "...";
-            this.btnMonth.UseVisualStyleBackColor = true;
+            this.cbBarname.FormattingEnabled = true;
+            this.cbBarname.Location = new System.Drawing.Point(74, 169);
+            this.cbBarname.Name = "cbBarname";
+            this.cbBarname.Size = new System.Drawing.Size(175, 21);
+            this.cbBarname.TabIndex = 12;
             // 
-            // btnGroupname
+            // lblBarcode
             // 
-            this.btnGroupname.Location = new System.Drawing.Point(255, 195);
-            this.btnGroupname.Name = "btnGroupname";
-            this.btnGroupname.Size = new System.Drawing.Size(28, 21);
-            this.btnGroupname.TabIndex = 31;
-            this.btnGroupname.Text = "...";
-            this.btnGroupname.UseVisualStyleBackColor = true;
+            this.lblBarcode.AutoSize = true;
+            this.lblBarcode.Location = new System.Drawing.Point(3, 145);
+            this.lblBarcode.Name = "lblBarcode";
+            this.lblBarcode.Size = new System.Drawing.Size(50, 13);
+            this.lblBarcode.TabIndex = 11;
+            this.lblBarcode.Text = "Barcode:";
             // 
-            // btnBarname
+            // cbBarcode
             // 
-            this.btnBarname.Location = new System.Drawing.Point(255, 169);
-            this.btnBarname.Name = "btnBarname";
-            this.btnBarname.Size = new System.Drawing.Size(28, 21);
-            this.btnBarname.TabIndex = 30;
-            this.btnBarname.Text = "...";
-            this.btnBarname.UseVisualStyleBackColor = true;
+            this.cbBarcode.FormattingEnabled = true;
+            this.cbBarcode.Location = new System.Drawing.Point(74, 142);
+            this.cbBarcode.Name = "cbBarcode";
+            this.cbBarcode.Size = new System.Drawing.Size(175, 21);
+            this.cbBarcode.TabIndex = 10;
             // 
-            // btnBarcode
+            // lblShopcode
             // 
-            this.btnBarcode.Location = new System.Drawing.Point(255, 142);
-            this.btnBarcode.Name = "btnBarcode";
-            this.btnBarcode.Size = new System.Drawing.Size(28, 21);
-            this.btnBarcode.TabIndex = 29;
-            this.btnBarcode.Text = "...";
-            this.btnBarcode.UseVisualStyleBackColor = true;
+            this.lblShopcode.AutoSize = true;
+            this.lblShopcode.Location = new System.Drawing.Point(3, 118);
+            this.lblShopcode.Name = "lblShopcode";
+            this.lblShopcode.Size = new System.Drawing.Size(59, 13);
+            this.lblShopcode.TabIndex = 9;
+            this.lblShopcode.Text = "Shopcode:";
             // 
-            // btnShopcode
+            // cbShopcode
             // 
-            this.btnShopcode.Location = new System.Drawing.Point(255, 115);
-            this.btnShopcode.Name = "btnShopcode";
-            this.btnShopcode.Size = new System.Drawing.Size(28, 21);
-            this.btnShopcode.TabIndex = 28;
-            this.btnShopcode.Text = "...";
-            this.btnShopcode.UseVisualStyleBackColor = true;
+            this.cbShopcode.FormattingEnabled = true;
+            this.cbShopcode.Location = new System.Drawing.Point(74, 115);
+            this.cbShopcode.Name = "cbShopcode";
+            this.cbShopcode.Size = new System.Drawing.Size(175, 21);
+            this.cbShopcode.TabIndex = 8;
             // 
-            // btnCostPrice
+            // lblWeek
             // 
-            this.btnCostPrice.Location = new System.Drawing.Point(255, 303);
-            this.btnCostPrice.Name = "btnCostPrice";
-            this.btnCostPrice.Size = new System.Drawing.Size(28, 21);
-            this.btnCostPrice.TabIndex = 35;
-            this.btnCostPrice.Text = "...";
-            this.btnCostPrice.UseVisualStyleBackColor = true;
+            this.lblWeek.AutoSize = true;
+            this.lblWeek.Location = new System.Drawing.Point(3, 91);
+            this.lblWeek.Name = "lblWeek";
+            this.lblWeek.Size = new System.Drawing.Size(39, 13);
+            this.lblWeek.TabIndex = 7;
+            this.lblWeek.Text = "Week:";
             // 
-            // btnSilesValue
+            // cbWeek
             // 
-            this.btnSilesValue.Location = new System.Drawing.Point(255, 277);
-            this.btnSilesValue.Name = "btnSilesValue";
-            this.btnSilesValue.Size = new System.Drawing.Size(28, 21);
-            this.btnSilesValue.TabIndex = 34;
-            this.btnSilesValue.Text = "...";
-            this.btnSilesValue.UseVisualStyleBackColor = true;
+            this.cbWeek.FormattingEnabled = true;
+            this.cbWeek.Location = new System.Drawing.Point(74, 88);
+            this.cbWeek.Name = "cbWeek";
+            this.cbWeek.Size = new System.Drawing.Size(175, 21);
+            this.cbWeek.TabIndex = 6;
             // 
-            // btnSilesItem
+            // lblMonth
             // 
-            this.btnSilesItem.Location = new System.Drawing.Point(255, 250);
-            this.btnSilesItem.Name = "btnSilesItem";
-            this.btnSilesItem.Size = new System.Drawing.Size(28, 21);
-            this.btnSilesItem.TabIndex = 33;
-            this.btnSilesItem.Text = "...";
-            this.btnSilesItem.UseVisualStyleBackColor = true;
+            this.lblMonth.AutoSize = true;
+            this.lblMonth.Location = new System.Drawing.Point(3, 64);
+            this.lblMonth.Name = "lblMonth";
+            this.lblMonth.Size = new System.Drawing.Size(40, 13);
+            this.lblMonth.TabIndex = 5;
+            this.lblMonth.Text = "Month:";
             // 
-            // btnProducerBrand
+            // cbMonth
             // 
-            this.btnProducerBrand.Location = new System.Drawing.Point(255, 223);
-            this.btnProducerBrand.Name = "btnProducerBrand";
-            this.btnProducerBrand.Size = new System.Drawing.Size(28, 21);
-            this.btnProducerBrand.TabIndex = 32;
-            this.btnProducerBrand.Text = "...";
-            this.btnProducerBrand.UseVisualStyleBackColor = true;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Location = new System.Drawing.Point(74, 61);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(175, 21);
+            this.cbMonth.TabIndex = 4;
+            // 
+            // lblYear
+            // 
+            this.lblYear.AutoSize = true;
+            this.lblYear.Location = new System.Drawing.Point(3, 37);
+            this.lblYear.Name = "lblYear";
+            this.lblYear.Size = new System.Drawing.Size(32, 13);
+            this.lblYear.TabIndex = 3;
+            this.lblYear.Text = "Year:";
+            // 
+            // cbYear
+            // 
+            this.cbYear.FormattingEnabled = true;
+            this.cbYear.Location = new System.Drawing.Point(74, 34);
+            this.cbYear.Name = "cbYear";
+            this.cbYear.Size = new System.Drawing.Size(175, 21);
+            this.cbYear.TabIndex = 2;
+            // 
+            // lblChainName
+            // 
+            this.lblChainName.AutoSize = true;
+            this.lblChainName.Location = new System.Drawing.Point(3, 10);
+            this.lblChainName.Name = "lblChainName";
+            this.lblChainName.Size = new System.Drawing.Size(65, 13);
+            this.lblChainName.TabIndex = 1;
+            this.lblChainName.Text = "ChainName:";
+            // 
+            // cbChainName
+            // 
+            this.cbChainName.FormattingEnabled = true;
+            this.cbChainName.Location = new System.Drawing.Point(74, 7);
+            this.cbChainName.Name = "cbChainName";
+            this.cbChainName.Size = new System.Drawing.Size(175, 21);
+            this.cbChainName.TabIndex = 0;
+            // 
+            // btnProccess
+            // 
+            this.btnProccess.Location = new System.Drawing.Point(115, 331);
+            this.btnProccess.Name = "btnProccess";
+            this.btnProccess.Size = new System.Drawing.Size(75, 23);
+            this.btnProccess.TabIndex = 36;
+            this.btnProccess.Text = "Обработать";
+            this.btnProccess.UseVisualStyleBackColor = true;
+            this.btnProccess.Click += new System.EventHandler(this.btnProccess_Click);
+            // 
+            // pbProgress
+            // 
+            this.pbProgress.Location = new System.Drawing.Point(0, 397);
+            this.pbProgress.Name = "pbProgress";
+            this.pbProgress.Size = new System.Drawing.Size(311, 12);
+            this.pbProgress.TabIndex = 37;
+            this.pbProgress.Visible = false;
+            // 
+            // закрытьToolStripMenuItem
+            // 
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.закрытьToolStripMenuItem.Text = "Закрыть";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 397);
+            this.ClientSize = new System.Drawing.Size(311, 409);
+            this.Controls.Add(this.pbProgress);
             this.Controls.Add(this.pMain);
             this.Controls.Add(this.msMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -517,6 +548,9 @@
         private System.Windows.Forms.Button btnMonth;
         private System.Windows.Forms.Button btnYear;
         private System.Windows.Forms.Button btnChainName;
+        private System.Windows.Forms.Button btnProccess;
+        private System.Windows.Forms.ProgressBar pbProgress;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
     }
 }
 

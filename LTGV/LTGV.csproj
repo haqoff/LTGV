@@ -52,8 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Format\FormatterFactory.cs" />
     <Compile Include="Format\AbstractFormatter.cs" />
     <Compile Include="Format\ReplaceFormatter.cs" />
+    <Compile Include="GUI\HintTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Header.cs" />
     <Compile Include="HeaderSettings.cs">
       <SubType>Form</SubType>
