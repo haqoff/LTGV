@@ -8,7 +8,7 @@ namespace LTGV
     {
         private Point lastLocationLabel = new Point(12, 13);
         private Point lastLocationTextBox = new Point(96, 10);
-        private Point lastLocationCheckBox = new Point(267, 10);
+        private Point lastLocationCheckBox = new Point(267, 9);
 
         private readonly Size TEXTBOX_SIZE = new Size(165, 20);
         private const int Y_OFFSET = 26;

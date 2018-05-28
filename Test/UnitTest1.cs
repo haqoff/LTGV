@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using LTGV;
 using LTGV.Format;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -38,6 +39,14 @@ namespace Test
 
             //assert
             Assert.AreEqual(expected, act);
+        }
+
+        [TestMethod]
+        public void TestDate()
+        {
+            var d = DateTime.ParseExact("17.2018","ww.yyyy", CultureInfo.InvariantCulture);
+
+            Assert.AreEqual(2018,d.Year);
         }
     }
 }

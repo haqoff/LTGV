@@ -18,7 +18,7 @@ namespace LTGV.Format
             TbCommand = new HintTextBox() { Hint = hint };
 
             CbEnabled = new CheckBox() { Text = "" };
-            CbEnabled.CheckedChanged += (object sender, EventArgs args) => SwitchEnable();
+            CbEnabled.CheckedChanged += (sender, args) => SwitchEnable();
             SwitchEnable();
         }
 

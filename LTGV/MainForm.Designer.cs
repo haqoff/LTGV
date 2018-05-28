@@ -31,7 +31,9 @@
             this.msMenu = new System.Windows.Forms.MenuStrip();
             this.tsmiFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.miClose = new System.Windows.Forms.ToolStripMenuItem();
             this.pMain = new System.Windows.Forms.Panel();
+            this.btnProccess = new System.Windows.Forms.Button();
             this.btnCostPrice = new System.Windows.Forms.Button();
             this.btnSilesValue = new System.Windows.Forms.Button();
             this.btnSilesItem = new System.Windows.Forms.Button();
@@ -68,9 +70,7 @@
             this.cbYear = new System.Windows.Forms.ComboBox();
             this.lblChainName = new System.Windows.Forms.Label();
             this.cbChainName = new System.Windows.Forms.ComboBox();
-            this.btnProccess = new System.Windows.Forms.Button();
             this.pbProgress = new System.Windows.Forms.ProgressBar();
-            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenu.SuspendLayout();
             this.pMain.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +89,7 @@
             // 
             this.tsmiFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miOpen,
-            this.закрытьToolStripMenuItem});
+            this.miClose});
             this.tsmiFile.Name = "tsmiFile";
             this.tsmiFile.Size = new System.Drawing.Size(48, 20);
             this.tsmiFile.Text = "Файл";
@@ -97,9 +97,16 @@
             // miOpen
             // 
             this.miOpen.Name = "miOpen";
-            this.miOpen.Size = new System.Drawing.Size(121, 22);
+            this.miOpen.Size = new System.Drawing.Size(180, 22);
             this.miOpen.Text = "Открыть";
             this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
+            // 
+            // miClose
+            // 
+            this.miClose.Name = "miClose";
+            this.miClose.Size = new System.Drawing.Size(180, 22);
+            this.miClose.Text = "Закрыть";
+            this.miClose.Click += new System.EventHandler(this.miClose_Click);
             // 
             // pMain
             // 
@@ -145,6 +152,16 @@
             this.pMain.Name = "pMain";
             this.pMain.Size = new System.Drawing.Size(287, 360);
             this.pMain.TabIndex = 1;
+            // 
+            // btnProccess
+            // 
+            this.btnProccess.Location = new System.Drawing.Point(115, 331);
+            this.btnProccess.Name = "btnProccess";
+            this.btnProccess.Size = new System.Drawing.Size(75, 23);
+            this.btnProccess.TabIndex = 36;
+            this.btnProccess.Text = "Обработать";
+            this.btnProccess.UseVisualStyleBackColor = true;
+            this.btnProccess.Click += new System.EventHandler(this.btnProccess_Click);
             // 
             // btnCostPrice
             // 
@@ -458,16 +475,6 @@
             this.cbChainName.Size = new System.Drawing.Size(175, 21);
             this.cbChainName.TabIndex = 0;
             // 
-            // btnProccess
-            // 
-            this.btnProccess.Location = new System.Drawing.Point(115, 331);
-            this.btnProccess.Name = "btnProccess";
-            this.btnProccess.Size = new System.Drawing.Size(75, 23);
-            this.btnProccess.TabIndex = 36;
-            this.btnProccess.Text = "Обработать";
-            this.btnProccess.UseVisualStyleBackColor = true;
-            this.btnProccess.Click += new System.EventHandler(this.btnProccess_Click);
-            // 
             // pbProgress
             // 
             this.pbProgress.Location = new System.Drawing.Point(0, 397);
@@ -475,12 +482,6 @@
             this.pbProgress.Size = new System.Drawing.Size(311, 12);
             this.pbProgress.TabIndex = 37;
             this.pbProgress.Visible = false;
-            // 
-            // закрытьToolStripMenuItem
-            // 
-            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
-            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.закрытьToolStripMenuItem.Text = "Закрыть";
             // 
             // MainForm
             // 
@@ -550,7 +551,7 @@
         private System.Windows.Forms.Button btnChainName;
         private System.Windows.Forms.Button btnProccess;
         private System.Windows.Forms.ProgressBar pbProgress;
-        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miClose;
     }
 }
 
