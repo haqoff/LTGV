@@ -6,15 +6,15 @@ namespace LTGV
 {
     public sealed partial class HeaderSettings : Form
     {
-        private Point lastLocationLabel = new Point(12, 13);
-        private Point lastLocationTextBox = new Point(96, 10);
-        private Point lastLocationCheckBox = new Point(267, 9);
-
-        private readonly Size TEXTBOX_SIZE = new Size(165, 20);
         private const int Y_OFFSET = 26;
 
-        private Header header;
-        
+        private readonly Size TEXTBOX_SIZE = new Size(165, 20);
+
+        private readonly Header header;
+        private Point lastLocationCheckBox = new Point(267, 9);
+        private Point lastLocationLabel = new Point(12, 13);
+        private Point lastLocationTextBox = new Point(96, 10);
+
         public HeaderSettings(Header header)
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace LTGV
 
         private void InitFormatters()
         {
-            for (int i = 0; i < header.Formatters.Length; i++)
+            for (var i = 0; i < header.Formatters.Length; i++)
             {
                 lastLocationLabel.Offset(0, i * Y_OFFSET);
                 lastLocationTextBox.Offset(0, i * Y_OFFSET);
@@ -59,7 +59,7 @@ namespace LTGV
 
         private void HeaderSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            for (int i = 0; i < header.Formatters.Length; i++)
+            for (var i = 0; i < header.Formatters.Length; i++)
             {
                 var f = header.Formatters[i];
 
@@ -67,9 +67,10 @@ namespace LTGV
                 {
                     f.ParseCommand();
                 }
-                catch(FormatException ex)
+                catch (FormatException ex)
                 {
-                    MessageBox.Show(ex.Message, $"Ошибка команды {f.LblName.Text}.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, $"Ошибка команды {f.LblName.Text}.", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     e.Cancel = true;
                 }
             }

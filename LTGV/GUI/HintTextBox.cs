@@ -5,21 +5,26 @@ namespace LTGV.GUI
 {
     public class HintTextBox : TextBox
     {
-        string hint;
+        private string hint;
+
         public string Hint
         {
-            get { return hint; }
-            set { hint = value; Invalidate(); }
+            get => hint;
+            set
+            {
+                hint = value;
+                Invalidate();
+            }
         }
+
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
             if (m.Msg == 0xf)
-            {
                 if (!Focused && string.IsNullOrEmpty(Text)
-                    && !string.IsNullOrEmpty(Hint))
+                             && !string.IsNullOrEmpty(Hint))
                 {
-                    var color = (Enabled) ? BackColor : SystemColors.Control;
+                    var color = Enabled ? BackColor : SystemColors.Control;
 
                     using (var g = CreateGraphics())
                     {
@@ -28,7 +33,6 @@ namespace LTGV.GUI
                             TextFormatFlags.Top | TextFormatFlags.Left);
                     }
                 }
-            }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using LTGV.Format;
-
-namespace LTGV.Format
+﻿namespace LTGV.Format
 {
     public static class FormatterFactory
     {

@@ -7,14 +7,6 @@ namespace LTGV
 {
     public class Header
     {
-        public string Name { get; }
-        public int ListSelectedIndex { get; private set; }
-        public string ListText { get; private set; }
-
-        public Button BtnSettings { get;}
-        public ComboBox DimList { get; }
-        public AbstractFormatter[] Formatters { get; }
-
         public Header(Button btnSettings, ComboBox dimList, string name)
         {
             BtnSettings = btnSettings;
@@ -23,9 +15,17 @@ namespace LTGV
             Name = name;
             Formatters = FormatterFactory.CreateStandartFormatters();
 
-            DimList.TextChanged += (object sender, EventArgs args) => OnListTextChanged();
+            DimList.TextChanged += (sender, args) => OnListTextChanged();
             OnListTextChanged();
         }
+
+        public string Name { get; }
+        public int ListSelectedIndex { get; private set; }
+        public string ListText { get; private set; }
+
+        public Button BtnSettings { get; }
+        public ComboBox DimList { get; }
+        public AbstractFormatter[] Formatters { get; }
 
         private void OnListTextChanged()
         {
@@ -35,15 +35,13 @@ namespace LTGV
 
         public void UpdateButtonColor()
         {
-            bool hasEnabledFormatter = false;
-            for (int i = 0; i < Formatters.Length; i++)
-            {
+            var hasEnabledFormatter = false;
+            for (var i = 0; i < Formatters.Length; i++)
                 if (Formatters[i].CbEnabled.Checked)
                 {
                     hasEnabledFormatter = true;
                     break;
                 }
-            }
 
             if (hasEnabledFormatter)
             {
@@ -64,6 +62,5 @@ namespace LTGV
 
             UpdateButtonColor();
         }
-    
     }
 }

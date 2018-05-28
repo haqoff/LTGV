@@ -11,24 +11,24 @@ namespace LTGV
 {
     public partial class MainForm : Form
     {
-        private DataTable table;
         private List<Header> headers;
 
-        private OpenFileDialog ofd;
-        private SaveFileDialog sfd;
+        private readonly OpenFileDialog ofd;
+        private readonly SaveFileDialog sfd;
+        private DataTable table;
 
         public MainForm()
         {
             InitializeComponent();
             BindGenerelHeaders();
 
-            ofd = new OpenFileDialog() {Filter = "(*.xls, *.xlsx)|*.xls;*xlsx", ValidateNames = true};
-            sfd = new SaveFileDialog() {Filter = "*.txt|*.txt", ValidateNames = true};
+            ofd = new OpenFileDialog {Filter = "(*.xls, *.xlsx)|*.xls;*xlsx", ValidateNames = true};
+            sfd = new SaveFileDialog {Filter = "*.txt|*.txt", ValidateNames = true};
         }
 
         private void BindGenerelHeaders()
         {
-            headers = new List<Header>()
+            headers = new List<Header>
             {
                 new Header(btnChainName, cbChainName, "ChainName"),
                 new Header(btnYear, cbYear, "Year"),
@@ -51,14 +51,11 @@ namespace LTGV
             {
                 var dataSet = IOUtils.GetDataSetFromExcelFileAsync(ofd.FileName).Result;
 
-                int tableIndex = 0;
+                var tableIndex = 0;
                 if (dataSet.Tables.Count > 1)
                 {
                     var sheetNames = new string[dataSet.Tables.Count];
-                    for (int i = 0; i < dataSet.Tables.Count; i++)
-                    {
-                        sheetNames[i] = dataSet.Tables[i].TableName;
-                    }
+                    for (var i = 0; i < dataSet.Tables.Count; i++) sheetNames[i] = dataSet.Tables[i].TableName;
 
                     var cd = new ComboboxDialog("Выберите лист.", sheetNames);
                     cd.ShowDialog();
@@ -68,13 +65,9 @@ namespace LTGV
                 table = dataSet.Tables[tableIndex];
 
                 foreach (var header in headers)
-                {
-                    for (int i = 0; i < table.Columns.Count; i++)
-                    {
+                    for (var i = 0; i < table.Columns.Count; i++)
                         header.DimList.Items.Add(StringUtils.GetExcelColumnName(i, 0) + ": " +
                                                  table.Columns[i].ColumnName);
-                    }
-                }
 
                 pMain.Enabled = true;
             }
@@ -103,7 +96,7 @@ namespace LTGV
                 var sb = new StringBuilder();
 
                 //Write Headers
-                for (int i = 0; i < headers.Count; i++)
+                for (var i = 0; i < headers.Count; i++)
                 {
                     sb.Append(headers[i].Name);
                     if (i != headers.Count - 1) sb.Append(tab);
@@ -116,7 +109,7 @@ namespace LTGV
                 {
                     sb.Clear();
 
-                    for (int i = 0; i < headers.Count; i++)
+                    for (var i = 0; i < headers.Count; i++)
                     {
                         var header = headers[i];
                         var indexColumn = header.ListSelectedIndex;
@@ -127,9 +120,8 @@ namespace LTGV
                         else value = header.ListText;
 
                         foreach (var formatter in header.Formatters)
-                        {
-                            if (formatter.Enabled) value = formatter.Format(value);
-                        }
+                            if (formatter.Enabled)
+                                value = formatter.Format(value);
 
                         sb.Append(value);
                         if (i != headers.Count - 1) sb.Append(tab);
@@ -147,12 +139,11 @@ namespace LTGV
 
         private void miSaveSettings_Click(object sender, EventArgs e)
         {
-            var saveFileDialog = new SaveFileDialog() {Filter = "*.bin|*.bin", ValidateNames = true};
+            var saveFileDialog = new SaveFileDialog {Filter = "*.bin|*.bin", ValidateNames = true};
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
                 try
                 {
-                    using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                    using (var stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
                     {
                         var bin = new BinaryFormatter();
 
@@ -163,32 +154,26 @@ namespace LTGV
                 {
                     MessageBox.Show(exception.Message, "Произошла ошибка при попытке сохранить настройки.");
                 }
-            }
         }
 
         private void miLoadSettings_Click(object sender, EventArgs e)
         {
-            var openFileDialog = new OpenFileDialog() {Filter = "*.bin|*.bin", ValidateNames = true};
+            var openFileDialog = new OpenFileDialog {Filter = "*.bin|*.bin", ValidateNames = true};
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
                 using (Stream stream = File.Open(openFileDialog.FileName, FileMode.Open))
                 {
-                    BinaryFormatter bin = new BinaryFormatter();
+                    var bin = new BinaryFormatter();
 
                     headers = (List<Header>) bin.Deserialize(stream);
                 }
-            }
         }
 
         private void miClose_Click(object sender, EventArgs e)
         {
             pMain.Enabled = false;
             table = null;
-            foreach (var header in headers)
-            {
-                header.DimList.Items.Clear();
-            }
+            foreach (var header in headers) header.DimList.Items.Clear();
         }
     }
 }

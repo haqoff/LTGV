@@ -25,12 +25,12 @@ namespace Test
         public void TestReplaceFormatter()
         {
             //arrange
-            string input = "04.2018";
-            string expected = "04";
+            var input = "04.2018";
+            var expected = "04";
 
-            ReplaceFormatter rf = new ReplaceFormatter();
+            var rf = new ReplaceFormatter();
             rf.CbEnabled.Checked = true;
-            rf.TbCommand.Text = "{.2018}{}";
+            rf.TbCommand.Text = @"{.2018}{}";
             rf.ParseCommand();
 
 
@@ -39,14 +39,6 @@ namespace Test
 
             //assert
             Assert.AreEqual(expected, act);
-        }
-
-        [TestMethod]
-        public void TestDate()
-        {
-            var d = DateTime.ParseExact("17.2018","ww.yyyy", CultureInfo.InvariantCulture);
-
-            Assert.AreEqual(2018,d.Year);
         }
     }
 }
