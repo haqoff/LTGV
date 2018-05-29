@@ -39,8 +39,8 @@ namespace LTGV
                 new Header(btnBarname, cbBarname, "Barname"),
                 new Header(btnGroupname, cbGroupname, "Groupname"),
                 new Header(btnProducerBrand, cbProducerBrand, "ProducerBrand"),
-                new Header(btnSilesItem, cbSilesItem, "SilesItem"),
-                new Header(btnSilesValue, cbSilesValue, "SilesValue"),
+                new Header(btnSalesItem, cbSalesItem, "SalesItem"),
+                new Header(btnSalesValue, cbSalesValue, "SalesValue"),
                 new Header(btnCostPrice, cbCostPrice, "CostPrice")
             };
         }

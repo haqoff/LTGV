@@ -35,8 +35,8 @@
             this.pMain = new System.Windows.Forms.Panel();
             this.btnProccess = new System.Windows.Forms.Button();
             this.btnCostPrice = new System.Windows.Forms.Button();
-            this.btnSilesValue = new System.Windows.Forms.Button();
-            this.btnSilesItem = new System.Windows.Forms.Button();
+            this.btnSalesValue = new System.Windows.Forms.Button();
+            this.btnSalesItem = new System.Windows.Forms.Button();
             this.btnProducerBrand = new System.Windows.Forms.Button();
             this.btnGroupname = new System.Windows.Forms.Button();
             this.btnBarname = new System.Windows.Forms.Button();
@@ -48,10 +48,10 @@
             this.btnChainName = new System.Windows.Forms.Button();
             this.lblCostPrice = new System.Windows.Forms.Label();
             this.cbCostPrice = new System.Windows.Forms.ComboBox();
-            this.lblSilesValue = new System.Windows.Forms.Label();
-            this.cbSilesValue = new System.Windows.Forms.ComboBox();
-            this.lblSilesItem = new System.Windows.Forms.Label();
-            this.cbSilesItem = new System.Windows.Forms.ComboBox();
+            this.lblSalesValue = new System.Windows.Forms.Label();
+            this.cbSalesValue = new System.Windows.Forms.ComboBox();
+            this.lblSalesItem = new System.Windows.Forms.Label();
+            this.cbSalesItem = new System.Windows.Forms.ComboBox();
             this.lblProducerBrand = new System.Windows.Forms.Label();
             this.cbProducerBrand = new System.Windows.Forms.ComboBox();
             this.lblGroupname = new System.Windows.Forms.Label();
@@ -97,14 +97,14 @@
             // miOpen
             // 
             this.miOpen.Name = "miOpen";
-            this.miOpen.Size = new System.Drawing.Size(180, 22);
+            this.miOpen.Size = new System.Drawing.Size(121, 22);
             this.miOpen.Text = "Открыть";
             this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
             // 
             // miClose
             // 
             this.miClose.Name = "miClose";
-            this.miClose.Size = new System.Drawing.Size(180, 22);
+            this.miClose.Size = new System.Drawing.Size(121, 22);
             this.miClose.Text = "Закрыть";
             this.miClose.Click += new System.EventHandler(this.miClose_Click);
             // 
@@ -112,8 +112,8 @@
             // 
             this.pMain.Controls.Add(this.btnProccess);
             this.pMain.Controls.Add(this.btnCostPrice);
-            this.pMain.Controls.Add(this.btnSilesValue);
-            this.pMain.Controls.Add(this.btnSilesItem);
+            this.pMain.Controls.Add(this.btnSalesValue);
+            this.pMain.Controls.Add(this.btnSalesItem);
             this.pMain.Controls.Add(this.btnProducerBrand);
             this.pMain.Controls.Add(this.btnGroupname);
             this.pMain.Controls.Add(this.btnBarname);
@@ -125,10 +125,10 @@
             this.pMain.Controls.Add(this.btnChainName);
             this.pMain.Controls.Add(this.lblCostPrice);
             this.pMain.Controls.Add(this.cbCostPrice);
-            this.pMain.Controls.Add(this.lblSilesValue);
-            this.pMain.Controls.Add(this.cbSilesValue);
-            this.pMain.Controls.Add(this.lblSilesItem);
-            this.pMain.Controls.Add(this.cbSilesItem);
+            this.pMain.Controls.Add(this.lblSalesValue);
+            this.pMain.Controls.Add(this.cbSalesValue);
+            this.pMain.Controls.Add(this.lblSalesItem);
+            this.pMain.Controls.Add(this.cbSalesItem);
             this.pMain.Controls.Add(this.lblProducerBrand);
             this.pMain.Controls.Add(this.cbProducerBrand);
             this.pMain.Controls.Add(this.lblGroupname);
@@ -172,23 +172,23 @@
             this.btnCostPrice.Text = "...";
             this.btnCostPrice.UseVisualStyleBackColor = true;
             // 
-            // btnSilesValue
+            // btnSalesValue
             // 
-            this.btnSilesValue.Location = new System.Drawing.Point(255, 277);
-            this.btnSilesValue.Name = "btnSilesValue";
-            this.btnSilesValue.Size = new System.Drawing.Size(28, 21);
-            this.btnSilesValue.TabIndex = 34;
-            this.btnSilesValue.Text = "...";
-            this.btnSilesValue.UseVisualStyleBackColor = true;
+            this.btnSalesValue.Location = new System.Drawing.Point(255, 277);
+            this.btnSalesValue.Name = "btnSalesValue";
+            this.btnSalesValue.Size = new System.Drawing.Size(28, 21);
+            this.btnSalesValue.TabIndex = 34;
+            this.btnSalesValue.Text = "...";
+            this.btnSalesValue.UseVisualStyleBackColor = true;
             // 
-            // btnSilesItem
+            // btnSalesItem
             // 
-            this.btnSilesItem.Location = new System.Drawing.Point(255, 250);
-            this.btnSilesItem.Name = "btnSilesItem";
-            this.btnSilesItem.Size = new System.Drawing.Size(28, 21);
-            this.btnSilesItem.TabIndex = 33;
-            this.btnSilesItem.Text = "...";
-            this.btnSilesItem.UseVisualStyleBackColor = true;
+            this.btnSalesItem.Location = new System.Drawing.Point(255, 250);
+            this.btnSalesItem.Name = "btnSalesItem";
+            this.btnSalesItem.Size = new System.Drawing.Size(28, 21);
+            this.btnSalesItem.TabIndex = 33;
+            this.btnSalesItem.Text = "...";
+            this.btnSalesItem.UseVisualStyleBackColor = true;
             // 
             // btnProducerBrand
             // 
@@ -288,39 +288,39 @@
             this.cbCostPrice.Size = new System.Drawing.Size(175, 21);
             this.cbCostPrice.TabIndex = 22;
             // 
-            // lblSilesValue
+            // lblSalesValue
             // 
-            this.lblSilesValue.AutoSize = true;
-            this.lblSilesValue.Location = new System.Drawing.Point(3, 280);
-            this.lblSilesValue.Name = "lblSilesValue";
-            this.lblSilesValue.Size = new System.Drawing.Size(59, 13);
-            this.lblSilesValue.TabIndex = 21;
-            this.lblSilesValue.Text = "SilesValue:";
+            this.lblSalesValue.AutoSize = true;
+            this.lblSalesValue.Location = new System.Drawing.Point(3, 280);
+            this.lblSalesValue.Name = "lblSalesValue";
+            this.lblSalesValue.Size = new System.Drawing.Size(63, 13);
+            this.lblSalesValue.TabIndex = 21;
+            this.lblSalesValue.Text = "SalesValue:";
             // 
-            // cbSilesValue
+            // cbSalesValue
             // 
-            this.cbSilesValue.FormattingEnabled = true;
-            this.cbSilesValue.Location = new System.Drawing.Point(74, 277);
-            this.cbSilesValue.Name = "cbSilesValue";
-            this.cbSilesValue.Size = new System.Drawing.Size(175, 21);
-            this.cbSilesValue.TabIndex = 20;
+            this.cbSalesValue.FormattingEnabled = true;
+            this.cbSalesValue.Location = new System.Drawing.Point(74, 277);
+            this.cbSalesValue.Name = "cbSalesValue";
+            this.cbSalesValue.Size = new System.Drawing.Size(175, 21);
+            this.cbSalesValue.TabIndex = 20;
             // 
-            // lblSilesItem
+            // lblSalesItem
             // 
-            this.lblSilesItem.AutoSize = true;
-            this.lblSilesItem.Location = new System.Drawing.Point(3, 253);
-            this.lblSilesItem.Name = "lblSilesItem";
-            this.lblSilesItem.Size = new System.Drawing.Size(52, 13);
-            this.lblSilesItem.TabIndex = 19;
-            this.lblSilesItem.Text = "SilesItem:";
+            this.lblSalesItem.AutoSize = true;
+            this.lblSalesItem.Location = new System.Drawing.Point(3, 253);
+            this.lblSalesItem.Name = "lblSalesItem";
+            this.lblSalesItem.Size = new System.Drawing.Size(56, 13);
+            this.lblSalesItem.TabIndex = 19;
+            this.lblSalesItem.Text = "SalesItem:";
             // 
-            // cbSilesItem
+            // cbSalesItem
             // 
-            this.cbSilesItem.FormattingEnabled = true;
-            this.cbSilesItem.Location = new System.Drawing.Point(74, 250);
-            this.cbSilesItem.Name = "cbSilesItem";
-            this.cbSilesItem.Size = new System.Drawing.Size(175, 21);
-            this.cbSilesItem.TabIndex = 18;
+            this.cbSalesItem.FormattingEnabled = true;
+            this.cbSalesItem.Location = new System.Drawing.Point(74, 250);
+            this.cbSalesItem.Name = "cbSalesItem";
+            this.cbSalesItem.Size = new System.Drawing.Size(175, 21);
+            this.cbSalesItem.TabIndex = 18;
             // 
             // lblProducerBrand
             // 
@@ -488,9 +488,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(311, 409);
+            this.Controls.Add(this.msMenu);
             this.Controls.Add(this.pbProgress);
             this.Controls.Add(this.pMain);
-            this.Controls.Add(this.msMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.msMenu;
             this.MaximizeBox = false;
@@ -517,10 +517,10 @@
         private System.Windows.Forms.ComboBox cbChainName;
         private System.Windows.Forms.Label lblCostPrice;
         private System.Windows.Forms.ComboBox cbCostPrice;
-        private System.Windows.Forms.Label lblSilesValue;
-        private System.Windows.Forms.ComboBox cbSilesValue;
-        private System.Windows.Forms.Label lblSilesItem;
-        private System.Windows.Forms.ComboBox cbSilesItem;
+        private System.Windows.Forms.Label lblSalesValue;
+        private System.Windows.Forms.ComboBox cbSalesValue;
+        private System.Windows.Forms.Label lblSalesItem;
+        private System.Windows.Forms.ComboBox cbSalesItem;
         private System.Windows.Forms.Label lblProducerBrand;
         private System.Windows.Forms.ComboBox cbProducerBrand;
         private System.Windows.Forms.Label lblGroupname;
@@ -538,8 +538,8 @@
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.ComboBox cbYear;
         private System.Windows.Forms.Button btnCostPrice;
-        private System.Windows.Forms.Button btnSilesValue;
-        private System.Windows.Forms.Button btnSilesItem;
+        private System.Windows.Forms.Button btnSalesValue;
+        private System.Windows.Forms.Button btnSalesItem;
         private System.Windows.Forms.Button btnProducerBrand;
         private System.Windows.Forms.Button btnGroupname;
         private System.Windows.Forms.Button btnBarname;
