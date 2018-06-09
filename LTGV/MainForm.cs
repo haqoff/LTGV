@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -15,6 +14,9 @@ namespace LTGV
 
         private readonly OpenFileDialog ofd;
         private readonly SaveFileDialog sfd;
+        private string ofdLastPath;
+        private string sfdLastPath;
+
         private DataTable table;
 
         public MainForm()
@@ -22,8 +24,11 @@ namespace LTGV
             InitializeComponent();
             BindGenerelHeaders();
 
-            ofd = new OpenFileDialog {Filter = "(*.xls, *.xlsx)|*.xls;*xlsx", ValidateNames = true};
-            sfd = new SaveFileDialog {Filter = "*.txt|*.txt", ValidateNames = true};
+            ofd = new OpenFileDialog { Filter = "(*.xls, *.xlsx)|*.xls;*xlsx", ValidateNames = true };
+            sfd = new SaveFileDialog { Filter = "*.txt|*.txt", ValidateNames = true };
+
+            ofdLastPath = string.Empty;
+            sfdLastPath = string.Empty;
         }
 
         private void BindGenerelHeaders()
@@ -47,37 +52,49 @@ namespace LTGV
 
         private void miOpen_Click(object sender, EventArgs e)
         {
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                var dataSet = IOUtils.GetDataSetFromExcelFileAsync(ofd.FileName).Result;
-
-                var tableIndex = 0;
-                if (dataSet.Tables.Count > 1)
-                {
-                    var sheetNames = new string[dataSet.Tables.Count];
-                    for (var i = 0; i < dataSet.Tables.Count; i++) sheetNames[i] = dataSet.Tables[i].TableName;
-
-                    var cd = new ComboboxDialog("Выберите лист.", sheetNames);
-                    cd.ShowDialog();
-                    tableIndex = cd.SelectedIndex;
-                }
-
-                table = dataSet.Tables[tableIndex];
-
-                foreach (var header in headers)
-                    for (var i = 0; i < table.Columns.Count; i++)
-                        header.DimList.Items.Add(StringUtils.GetExcelColumnName(i, 0) + ": " +
-                                                 table.Columns[i].ColumnName);
-
-                pMain.Enabled = true;
-            }
+            ofd.FileName = ofdLastPath;
+            if (ofd.ShowDialog() == DialogResult.OK) OpenProject(ofd.FileName);
         }
+
+        private void OpenProject(string fileName)
+        {
+            CloseProject();
+
+            var dataSet = IOUtils.GetDataSetFromExcelFileAsync(fileName).Result;
+
+            var tableIndex = 0;
+            if (dataSet.Tables.Count > 1)
+            {
+                var sheetNames = new string[dataSet.Tables.Count];
+                for (var i = 0; i < dataSet.Tables.Count; i++) sheetNames[i] = dataSet.Tables[i].TableName;
+
+                var cd = new ComboboxDialog("Выберите лист.", sheetNames);
+                cd.ShowDialog();
+                tableIndex = cd.SelectedIndex;
+            }
+
+            table = dataSet.Tables[tableIndex];
+
+            foreach (var header in headers)
+                for (var i = 0; i < table.Columns.Count; i++)
+                    header.DimList.Items.Add(StringUtils.GetExcelColumnName(i, 0) + ": " +
+                                             table.Columns[i].ColumnName);
+
+            ofdLastPath = fileName;
+            pMain.Enabled = true;
+        }
+
 
         private void btnProccess_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(sfdLastPath))
+                sfd.FileName = sfdLastPath.Replace(Path.GetFileName(sfdLastPath), "") + @"\";
+            sfd.FileName += Path.GetFileName(ofdLastPath);
+
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 var thread = new Thread(() => Proccess(sfd.FileName, table));
+                sfdLastPath = sfd.FileName;
                 thread.Start();
             }
         }
@@ -86,10 +103,10 @@ namespace LTGV
         {
             const char tab = '\t';
 
-            pbProgress.Invoke((MethodInvoker) (() => pbProgress.Value = 0));
-            pbProgress.Invoke((MethodInvoker) (() => pbProgress.Maximum = table.Rows.Count));
-            pbProgress.Invoke((MethodInvoker) (() => pbProgress.Visible = true));
-            pMain.Invoke((MethodInvoker) (() => pMain.Enabled = false));
+            pbProgress.Invoke((MethodInvoker)(() => pbProgress.Value = 0));
+            pbProgress.Invoke((MethodInvoker)(() => pbProgress.Maximum = table.Rows.Count));
+            pbProgress.Invoke((MethodInvoker)(() => pbProgress.Visible = true));
+            pMain.Invoke((MethodInvoker)(() => pMain.Enabled = false));
 
             using (var streamWriter = new StreamWriter(path, false, Encoding.Default))
             {
@@ -128,48 +145,18 @@ namespace LTGV
                     }
 
                     streamWriter.WriteLine(sb);
-                    pbProgress.Invoke((MethodInvoker) (() => pbProgress.Increment(1)));
+                    pbProgress.Invoke((MethodInvoker)(() => pbProgress.Increment(1)));
                 }
             }
 
             MessageBox.Show("Обработка завершена.", "Завершено", MessageBoxButtons.OK, MessageBoxIcon.None);
-            pMain.Invoke((MethodInvoker) (() => pMain.Enabled = true));
-            pbProgress.Invoke((MethodInvoker) (() => pbProgress.Visible = false));
+            pMain.Invoke((MethodInvoker)(() => pMain.Enabled = true));
+            pbProgress.Invoke((MethodInvoker)(() => pbProgress.Visible = false));
         }
 
-        private void miSaveSettings_Click(object sender, EventArgs e)
-        {
-            var saveFileDialog = new SaveFileDialog {Filter = "*.bin|*.bin", ValidateNames = true};
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                try
-                {
-                    using (var stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
-                    {
-                        var bin = new BinaryFormatter();
+        private void miClose_Click(object sender, EventArgs e) => CloseProject();
 
-                        bin.Serialize(stream, headers);
-                    }
-                }
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.Message, "Произошла ошибка при попытке сохранить настройки.");
-                }
-        }
-
-        private void miLoadSettings_Click(object sender, EventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog {Filter = "*.bin|*.bin", ValidateNames = true};
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-                using (Stream stream = File.Open(openFileDialog.FileName, FileMode.Open))
-                {
-                    var bin = new BinaryFormatter();
-
-                    headers = (List<Header>) bin.Deserialize(stream);
-                }
-        }
-
-        private void miClose_Click(object sender, EventArgs e)
+        private void CloseProject()
         {
             pMain.Enabled = false;
             table = null;
